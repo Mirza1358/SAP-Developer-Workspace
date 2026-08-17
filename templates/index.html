@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAP Developer Workspace</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=72:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Highlight.js for ABAP Code Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <!-- Fiori-inspired Header -->
+    <header class="sap-header">
+        <div class="header-left">
+            <div class="logo"></div>
+            <span class="app-title">SAP AI Developer Workspace</span>
+        </div>
+        <div class="header-right">
+            <div class="status-badge hidden" id="status-badge">
+                <span class="pulse-dot"></span> System Active
+            </div>
+            <button id="end-session-btn" class="icon-btn hidden" title="End Session">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <main class="workspace-container">
+        
+        <!-- Details Setup Screen (Overlay) -->
+        <div class="setup-overlay" id="setup-screen">
+            <div class="setup-modal">
+                <div class="modal-icon">
+                    <i class="fa-solid fa-terminal"></i>
+                </div>
+                <h1>Initialize Environment</h1>
+                <p>Enter your developer profile to configure the workspace.</p>
+                <form id="setup-form">
+                    <div class="input-field">
+                        <label for="name">Developer ID / Name</label>
+                        <input type="text" id="name" placeholder="e.g. jdoe" required autocomplete="off">
+                    </div>
+                    <div class="input-field">
+                        <label for="role">Role Authorization</label>
+                        <input type="text" id="role" placeholder="e.g. ABAP Developer, Basis" required autocomplete="off">
+                    </div>
+                    <button type="submit" class="sap-primary-btn">
+                        Connect to Copilot
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- The Dual-Pane IDE (Hidden until setup) -->
+        <div class="ide-layout hidden" id="ide-screen">
+            
+            <!-- Left Pane: AI Chat Assistant -->
+            <aside class="chat-sidebar">
+                <div class="sidebar-header">
+                    <i class="fa-brands fa-hubspot"></i>
+                    <span>Copilot Chat</span>
+                </div>
+                
+                <div class="chat-scroll-area" id="chat-box">
+                    <!-- Messages go here -->
+                </div>
+                
+                <div class="chat-input-area">
+                    <div class="input-box">
+                        <textarea id="chat-input" placeholder="Ask about ABAP syntax, T-Codes..." rows="1"></textarea>
+                        <button id="send-btn" title="Send Request">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Pane: Code Editor Viewer -->
+            <section class="code-editor-pane">
+                <div class="editor-header">
+                    <div class="tabs">
+                        <div class="tab active"><i class="fa-regular fa-file-code"></i> <span>Output.abap</span></div>
+                    </div>
+                    <div class="editor-actions">
+                        <button class="editor-btn" id="copy-code-btn" title="Copy Code">
+                            <i class="fa-regular fa-copy"></i> Copy
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="editor-body">
+                    <!-- Line Numbers & Code Block -->
+                    <pre><code id="code-output" class="language-abap">
+* Ready for ABAP Code Generation.
+* Ask the Copilot a coding question to begin.
+                    </code></pre>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/abap.min.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>
