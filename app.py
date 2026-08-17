@@ -12,8 +12,11 @@ app.secret_key = os.urandom(24) # Required for secure sessions
 # Store chat objects and history in memory for active sessions
 active_chats = {}
 
-api_key = os.getenv("GROQ_API_KEY")
-client = Groq(api_key=api_key)
+def get_groq_client():
+    api_key = os.getenv("GROQ_API_KEY")
+    if not api_key:
+        raise ValueError("GROQ_API_KEY environment variable is missing!")
+    return Groq(api_key=api_key)
 
 SYSTEM_INSTRUCTION = """
 You are a highly skilled SAP Support Engineer and ABAP Expert assisting junior employees and functional consultants. 
@@ -47,6 +50,7 @@ def start_session():
     
     # Trigger the first question by sending a prompt as the user
     try:
+        client = get_groq_client()
         chat_completion = client.chat.completions.create(
             messages=messages,
             model="openai/gpt-oss-20b",
@@ -85,6 +89,7 @@ def chat():
     
     # Continue chat
     try:
+        client = get_groq_client()
         chat_completion = client.chat.completions.create(
             messages=chat_data['history'],
             model="openai/gpt-oss-20b",
