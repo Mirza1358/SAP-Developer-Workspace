@@ -53,7 +53,7 @@ def start_session():
         client = get_groq_client()
         chat_completion = client.chat.completions.create(
             messages=messages,
-            model="mixtral-8x7b-32768",
+            model="openai/gpt-oss-20b",
         )
         response_text = chat_completion.choices[0].message.content
         
@@ -92,7 +92,7 @@ def chat():
         client = get_groq_client()
         chat_completion = client.chat.completions.create(
             messages=chat_data['history'],
-            model="mixtral-8x7b-32768",
+            model="openai/gpt-oss-20b",
         )
         response_text = chat_completion.choices[0].message.content
         
