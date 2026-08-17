@@ -71,8 +71,8 @@ def start_session():
     except Exception as e:
         error_message = str(e)
         if "rate limit" in error_message.lower():
-            return jsonify({"reply": "Groq API Rate Limit Reached. Please wait a moment before starting the interview.", "status": "error"}), 429
-        return jsonify({"reply": "An error occurred connecting to the AI.", "status": "error"}), 500
+            return jsonify({"reply": "Groq API Rate Limit Reached. Please wait a moment before starting the session.", "status": "error"}), 429
+        return jsonify({"reply": f"An error occurred connecting to the AI: {error_message}", "status": "error"}), 500
 
 @app.route('/chat', methods=['POST'])
 def chat():
