@@ -2,6 +2,8 @@
 
 This project is a specialized, web-based IDE workspace designed for SAP ABAP Developers and Functional Consultants. Unlike standard "ChatGPT wrappers," this tool features a true dual-pane IDE layout with an intelligent code-extraction engine.
 
+**🔗 Live Demo:** [View on Vercel](https://sap-developer-workspace.vercel.app)
+
 ## Features
 
 - **Dual-Pane IDE Layout:** A professional split-screen interface mimicking enterprise IDEs like Eclipse ADT or VS Code.
@@ -47,6 +49,15 @@ This project is a specialized, web-based IDE workspace designed for SAP ABAP Dev
    python app.py
    ```
    Open your browser and navigate to `http://127.0.0.1:5000`.
+
+## Cloud Deployment (Vercel)
+
+This application is configured for seamless deployment on Vercel via Serverless Functions.
+
+1. Connect your GitHub repository to Vercel.
+2. The included `vercel.json` will automatically configure the Python runtime and routing.
+3. In your Vercel Dashboard Settings, add the `GROQ_API_KEY` to the **Environment Variables**.
+4. Deploy!
 
 ## How It Works
 1. **Initialize Session:** Enter your Developer ID and Role (e.g., ABAP Developer) to configure the system prompt context.
