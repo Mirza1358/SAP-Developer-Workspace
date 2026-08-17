@@ -53,7 +53,7 @@ def start_session():
         client = get_groq_client()
         chat_completion = client.chat.completions.create(
             messages=messages,
-            model="llama-3.1-8b-instant",
+            model="mixtral-8x7b-32768",
         )
         response_text = chat_completion.choices[0].message.content
         
@@ -92,7 +92,7 @@ def chat():
         client = get_groq_client()
         chat_completion = client.chat.completions.create(
             messages=chat_data['history'],
-            model="llama-3.1-8b-instant",
+            model="mixtral-8x7b-32768",
         )
         response_text = chat_completion.choices[0].message.content
         
